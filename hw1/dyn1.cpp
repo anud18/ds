@@ -20,13 +20,16 @@ void show_k_powers_time(int k){
 		sum += n;	
 	stop = clock();//結束計算加總所需時間
 	ofs << ' '<< "traversal needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC <<endl;
+    for(int i =0; i < 10000;++i)
+    values.push_back(2);
+    cout << values.size();
 	values.clear();
 
 }
 int main(){
 	srand(time(NULL));
 	ofs.open("dynamic_array.txt", ios::app);
-	for(int i = 15; i < 31; ++i)
+	for(int i = 15; i < 16; ++i)
 		show_k_powers_time(i);
 	ofs.close();
 	return 0;

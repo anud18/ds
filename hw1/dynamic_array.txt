@@ -238,3 +238,5 @@ k: 27 add needs 2.494630 traversal needs 0.734262
 k: 28 add needs 4.801289 traversal needs 1.396258
 k: 29 add needs 11.749627 traversal needs 3.119677
 k: 30 add needs 24.267586 traversal needs 7.175579
+k: 15 add needs 0.000497 traversal needs 0.000149
+k: 15 add needs 0.000838 traversal needs 0.000257

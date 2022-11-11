@@ -1,0 +1,49 @@
+k: 15 Lomuto needs 0.009298
+k: 16 Lomuto needs 0.028951
+k: 17 Lomuto needs 0.098639
+k: 18 Lomuto needs 0.335526
+k: 19 Lomuto needs 1.309388
+k: 20 Lomuto needs 5.123217
+k: 21 Lomuto needs 20.356474
+k: 22 Lomuto needs 86.566664
+k: 23 Lomuto needs 356.063182
+k: 24 Lomuto needs 2061.376235
+seed: 115 k: 15 Lomuto needs 0.025083
+seed: 116 k: 16 Lomuto needs 0.047392
+seed: 117 k: 17 Lomuto needs 0.213869
+seed: 118 k: 18 Lomuto needs 0.772876
+seed: 119 k: 19 Lomuto needs 2.692381
+seed: 120 k: 20 Lomuto needs 11.216105
+seed: 121 k: 21 Lomuto needs 42.374424
+seed: 122 k: 22 Lomuto needs 166.732341
+seed: 123 k: 23 Lomuto needs 667.367801
+seed: 124 k: 24 Lomuto needs 2897.665722
+seed: 215 k: 15 Lomuto needs 0.034694
+seed: 216 k: 16 Lomuto needs 0.077493
+seed: 217 k: 17 Lomuto needs 0.245717
+seed: 218 k: 18 Lomuto needs 0.803188
+seed: 219 k: 19 Lomuto needs 3.294913
+seed: 220 k: 20 Lomuto needs 12.303983
+seed: 221 k: 21 Lomuto needs 49.342049
+seed: 222 k: 22 Lomuto needs 194.614184
+seed: 223 k: 23 Lomuto needs 758.550095
+seed: 224 k: 24 Lomuto needs 3003.024186
+seed: 315 k: 15 Lomuto needs 0.028230
+seed: 316 k: 16 Lomuto needs 0.047535
+seed: 317 k: 17 Lomuto needs 0.236908
+seed: 318 k: 18 Lomuto needs 0.810140
+seed: 319 k: 19 Lomuto needs 3.217068
+seed: 320 k: 20 Lomuto needs 12.369779
+seed: 321 k: 21 Lomuto needs 48.382432
+seed: 322 k: 22 Lomuto needs 197.921236
+seed: 323 k: 23 Lomuto needs 715.196105
+seed: 324 k: 24 Lomuto needs 3126.036603
+seed: 415 k: 15 Lomuto needs 0.017405
+seed: 416 k: 16 Lomuto needs 0.063618
+seed: 417 k: 17 Lomuto needs 0.209450
+seed: 418 k: 18 Lomuto needs 0.873384
+seed: 419 k: 19 Lomuto needs 3.587554
+seed: 420 k: 20 Lomuto needs 13.251837
+seed: 421 k: 21 Lomuto needs 54.148582
+seed: 422 k: 22 Lomuto needs 222.722110
+seed: 423 k: 23 Lomuto needs 785.504090
