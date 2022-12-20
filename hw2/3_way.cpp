@@ -1,9 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void partition(vector<int> a, int low, int high, int& i, int& j)
-{
-    // To handle 2 elements
+void partition(vector<short> &a, int low, int high, int& i, int& j){
     if (high - low <= 1) {
         if (a[high] < a[low])
             swap(a[high], a[low]);
@@ -11,7 +9,6 @@ void partition(vector<int> a, int low, int high, int& i, int& j)
         j = high;
         return;
     }
-
     int mid = low;
     int pivot = a[high];
     while (mid <= high) {
@@ -22,24 +19,14 @@ void partition(vector<int> a, int low, int high, int& i, int& j)
         else if (a[mid] > pivot)
             swap(a[mid], a[high--]);
     }
-
-    // update i and j
     i = low - 1;
     j = mid; // or high+1
 }
-
-// 3-way partition based quick sort
-void quicksort(vector<int> &a, int low, int high)
-{
+void quicksort(vector<short> &a, int low, int high){
     if (low >= high) // 1 or 0 elements
         return;
-
     int i, j;
-
-    // Note that i and j are passed as reference
     partition(a, low, high, i, j);
-
-    // Recur two halves
     quicksort(a, low, i);
     quicksort(a, j, high);
 }
@@ -97,17 +84,20 @@ void run_kSize(int k, int n){
         arr.push_back(r_val(gen));
     start = clock();//開始計算新增所需時間
 
-    counting_sort(arr.begin(), arr.end());
+    quicksort(arr,0, arr.size() - 1);
+
 
     stop = clock();//結束計算新增所需時間
-    cout << "seed: " << seed << ' ' <<"k: "<< k << ' '<< "Counting sort needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
+    cout << "seed: " << seed << ' ' <<"k: "<< k << ' '<< "3way needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
+    //cout << arr.size() << endl;
     //for(int i = 0; i < 1 << k; ++i)
     //cout << arr[i] << ' ';
+    //cout << endl << arr.size();
     vector<short>().swap(arr);
 }
 int main(){
     for(int j = 0; j < 10; ++j)
-        for(int i = 11; i < 12; ++i)
+        for(int i = 15; i < 31; ++i)
             run_kSize(i,j);
 
 }

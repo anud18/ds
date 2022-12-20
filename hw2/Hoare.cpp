@@ -13,24 +13,15 @@ using namespace std;
 int partition(vector<short> &arr, int low, int high){
     int pivot = arr[low];
     int i = low - 1, j = high + 1;
-
     while (true) {
-        // Find leftmost element greater than
-        // or equal to pivot
         do {
             i++;
         } while (arr[i] < pivot);
-
-        // Find rightmost element smaller than
-        // or equal to pivot
         do {
             j--;
         } while (arr[j] > pivot);
-
-        // If two pointers met.
         if (i >= j)
             return j;
-
         swap(arr[i], arr[j]);
     }
 }
@@ -41,7 +32,6 @@ void quickSort(vector<short> &arr, int begin, int end){
         quickSort(arr, begin, mid);
         quickSort(arr, mid + 1, end);
     }
-
 }
 
     template<class BiDirIt, class Compare = std::less<>>

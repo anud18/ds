@@ -20,23 +20,16 @@ void quickSort(vector<short> &arr, int begin, int end){
 
 }
 void run_kSize(int k, int n){
-    unsigned int seed = k + n * 100;
+    unsigned int seed = k + n * 100;//確保不同排序所排序的陣列一樣
     mt19937 gen(seed);
     uniform_int_distribution<> r_val(1,1000);
-
     vector<short> arr;
     arr.reserve(1 << k);
     clock_t start, stop;
-    //start = clock();//開始計算新增所需時間
     for(int i = 0; i < (1<<k); i++)
         arr.push_back(r_val(gen));
-    //cout << arr[0];
-    //stop = clock();//結束計算新增所需時間
-    //cout << "k: "<< k << ' '<< "add needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
     start = clock();//開始計算新增所需時間
-
-    quickSort(arr, 0, arr.size());
-
+    quickSort(arr, 0, arr.size());//這裡可替換成不同排序
     stop = clock();//結束計算新增所需時間
     cout << "seed: " << seed <<" k: "<< k << ' '<< "Lomuto needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
     vector<short>().swap(arr);
@@ -45,7 +38,6 @@ int main(){
     for(int j = 1; j < 10; ++j)
         for(int i = 15; i < 25; i++)
             run_kSize(i,j);
-
 }
 
 

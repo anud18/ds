@@ -62,35 +62,27 @@ void counting_sort(ForwardIterator first, ForwardIterator last)
     }
 }
 void run_kSize(int k, int n){
-    unsigned int seed = k + 100*n;
+    unsigned int seed = k + 100*n;//產生種子碼
     mt19937 gen(seed);
     uniform_int_distribution<> r_val(1,1000);
 
     vector<short> arr;
     arr.reserve(1 << k);
     clock_t start, stop;
-    //start = clock();//開始計算新增所需時間
     for(int i = 0; i < (1 << k) ; i++)
         arr.push_back(r_val(gen));
-    //stop = clock();//結束計算新增所需時間
-    //cout << "k: "<< k << ' '<< "add needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
     start = clock();//開始計算新增所需時間
 
-    counting_sort(arr.begin(), arr.end());
+    counting_sort(arr.begin(), arr.end());//排序方法
 
     stop = clock();//結束計算新增所需時間
     cout << "seed: " << seed << ' ' <<"k: "<< k << ' '<< "Counting sort needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
-    //for(int i = 0; i < 1 << 10; ++i)
-    //cout << arr[i] << ' ';
     vector<short>().swap(arr);
 }
 int main(){
-    for(int i = 27; i < 31; ++i)
-        run_kSize(i,1);
-    for(int j = 2; j < 10; ++j)
+    for(int j = 0; j < 10; ++j)
         for(int i = 15; i < 31; ++i)
             run_kSize(i,j);
-
 }
 
 
