@@ -44,7 +44,7 @@ public:
     Node* createNode(int, int);
     void insertElement(int);
     void deleteElement(int);
-    void searchElement(int);
+    bool searchElement(int);
     void displayList();
 };
 
@@ -195,7 +195,7 @@ void SkipList::deleteElement(int key)
 };
 
 // Search for element in skip list
-void SkipList::searchElement(int key)
+bool SkipList::searchElement(int key)
 {
     Node *current = header;
 
@@ -220,9 +220,11 @@ void SkipList::searchElement(int key)
     // If current node have key equal to
     // search key, we have found our target node
     if(current and current->key == key){
+        return true;
         //cout<<"Found key: "<<key<<"\n";
         //
     }
+    return false;
 };
 
 // Display skip list level wise

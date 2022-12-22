@@ -1,39 +1,59 @@
 #include<bits/stdc++.h>
+#include"BTREE.h"
 
 using namespace std;
-
-const int maxValue = 1 << 30;
 const int minValue = 1;
-const int maxTimes = 1 << 20;
+const int maxValue = 1 << 30;
+const int SearchSize = 100000;
 
-int main(){   
+void runKsize(int k){
     unsigned int seed = 1 + 100*1;
     mt19937 gen(seed);
     uniform_int_distribution<> r_val(minValue,maxValue);
-    vector<int> beSearched(100000);
+    int n = 1 << k;
 
+    vector<int> beSearched(SearchSize);
+    for(int i = 0; i < SearchSize; ++i)
+        beSearched.push_back(r_val(gen));
+
+    clock_t start, stop;
+    start = clock();
+    BTree btree(512);
+    for(int times = 0; times < n; ++times){
+        //int i = r_val(gen);
+        //cout << i <<endl;
+        btree.insert(r_val(gen));
+    }
+    stop = clock();
+    cout << "seed: " << seed << ' '  << "k:" << k << ' '<< "Hash table construction needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
+
+    start = clock();
     for(auto &it : beSearched){
-        it = r_val(gen);
-    }
+        if(btree.search(it)){
 
-    unordered_map<int, int> hash_table;
-    //vector<int> record;
-    for(int times = 0; times < maxTimes; ++times){
-        int i = r_val(gen);
-        //record.push_back(i);
-        hash_table.emplace(i,i);
+        }
     }
-    //cout << record[50] << ' ' << hash_table.bucket(record[50]);
-
-    //int count = 0; 
-    for(auto &it : beSearched){
-        if(hash_table[it])
-        cout << hash_table[it] << endl;
-    }
-
-    //int i = 0;
-    //for(auto &it : beSearched){
-    //cout << i++  << ' '<< it << endl; 
-    //}
+    stop = clock();
+    cout << "seed: " << seed << ' '  << "k:" << k << ' '<< "Hash table search needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
 
 }
+
+
+int main(){   
+    runKsize(20);
+
+
+}
+
+
+
+///1 4 7 8 8 9
+//1 4 7
+//8
+//
+//
+//
+//1
+//4
+//7
+//

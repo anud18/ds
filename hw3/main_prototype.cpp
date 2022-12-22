@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include"ASA.h"
+#include"BTREE.h"
 
 using namespace std;
 const int minValue = 1;
@@ -19,7 +19,7 @@ void runKsize(int k){
     clock_t start, stop;
     start = clock();
     //declare data structure
-    arrayOfSortedArray ds;
+            ds;
     for(int times = 0; times < n; ++times){
         ds.insert(r_val(gen));
     }
@@ -33,7 +33,7 @@ void runKsize(int k){
         }
     }
     stop = clock();
-    cout << "k:" << k << ' '<< "search needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
+    cout << ' '  << "k:" << k << ' '<< "search needs "<< fixed << setprecision(6) <<double(stop - start) / CLOCKS_PER_SEC << endl;
 
 }
 
@@ -41,6 +41,18 @@ void runKsize(int k){
 int main(){   
     for(int i = 10; i < 30; ++i)
         runKsize(i);
-    //kill
 
 }
+
+
+
+///1 4 7 8 8 9
+//1 4 7
+//8
+//
+//
+//
+//1
+//4
+//7
+//
