@@ -31,7 +31,7 @@ void arrayOfSortedArray::insert(int element){
         //cout << "not empty call merge" << endl;
         //cout << "_arr: ";
         //for(auto it : _arr[0])
-            //cout << it << ' ';
+        //cout << it << ' ';
         //cout << endl;
         merge(0);
     }
@@ -57,12 +57,19 @@ void arrayOfSortedArray::merge(int curLevel){
     }
 }
 bool arrayOfSortedArray::search(int target){
-    for(auto &it : _arr){
+    int i = 0;
+    for(auto &it : arr){
         if(it.empty()){
             continue;
-
         }
-        else if(binary_search(it.begin(), it.end(), target)){
+
+        //cout << "search: ";
+        //for(auto col : it){
+            //cout << col << ' ';
+        //}
+        
+        //cout << endl;
+        if(binary_search(it.begin(), it.end(), target)){
             return true;
         }
     }
@@ -77,13 +84,13 @@ void mergeTwoSortedArray(vector<int>& v1, vector<int>& v2, vector<int>& v3){
     //cout << "Merge" <<endl;
     //cout << "arr: ";
     //for(auto it : v1)
-        //cout << it << ' ';
+    //cout << it << ' ';
     //cout << endl;
     //cout << "_arr: ";
     //for(auto it : v2)
-        //cout << it << ' ';
+    //cout << it << ' ';
     //cout << endl;
-    
+
     while(i < v1.size() && j < v2.size()){
         if(v1[i] < v2[j])
             v3.push_back(v1[i++]);
@@ -91,9 +98,9 @@ void mergeTwoSortedArray(vector<int>& v1, vector<int>& v2, vector<int>& v3){
             v3.push_back(v2[j++]);
     }
     while(i < v1.size())
-            v3.push_back(v1[i++]);
+        v3.push_back(v1[i++]);
     while(j < v2.size())
-            v3.push_back(v2[j++]);
+        v3.push_back(v2[j++]);
     v1.clear();
     v2.clear();
 }
@@ -102,21 +109,23 @@ void mergeTwoSortedArray(vector<int>& v1, vector<int>& v2, vector<int>& v3){
 int main(){
     arrayOfSortedArray t;
     //cout << 1;
-    int j = 0;
-    for(int i = 0; i < 30; ++i){
+    for(int i = 0; i < 1 << 23; ++i){
+        int j = 0;
         t.insert(i);
 
-        cout << "    print" << endl;
-        for(auto row : t.arr){
-            cout << "arrsize : " << row.capacity() << endl;
-            for(auto col : row){
-                cout << col << ' ';
-            }
-            cout <<endl;
-        }
+        //cout << "    print" << endl;
+        //for(auto row : t.arr){
+            //cout << "arrsize : " << row.capacity()  << " level " << j++<< endl;
+            //for(auto col : row){
+                //cout << col << ' ';
+            //}
+            //cout <<endl;
+        //}
 
     }
-    cout << t.search(5);
+    cout << t.search(2);
+    //vector<int> it = {1,2,3,4,5};
+    //cout << binary_search(it.begin(), it.end(), 5);
     //for(auto row : t._arr){
     //for(auto col : row){
     //cout << col << ' ';
@@ -129,7 +138,7 @@ int main(){
     //out.clear();
     //mergeTwoSortedArray(v1, v2, out);
     //for(auto &it : out)
-        //cout << it << ' ' ;
+    //cout << it << ' ' ;
     //cout << endl;
 
 }
