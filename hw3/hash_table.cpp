@@ -38,5 +38,6 @@ int main(){
     for(int i = 10; i < 29; ++i){
         runKsize(i);
     }
+    //kill
 
 }
