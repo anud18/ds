@@ -1,5 +1,5 @@
 #include<bits/stdc++.h>
-#include"BTREE.h"
+#include"ASA.h"
 
 using namespace std;
 const int minValue = 1;
@@ -19,7 +19,7 @@ void runKsize(int k){
     clock_t start, stop;
     start = clock();
     //declare data structure
-    BTree ds(100);
+    arrayOfSortedArray ds;
     for(int times = 0; times < n; ++times){
         ds.insert(r_val(gen));
     }
@@ -29,6 +29,7 @@ void runKsize(int k){
     start = clock();
     for(auto &it : beSearched){
         if(ds.search(it)){
+            cout << it << endl;
 
         }
     }
@@ -39,7 +40,8 @@ void runKsize(int k){
 
 
 int main(){   
-    for(int i = 10; i < 29; ++i)
+    for(int i = 19; i < 20; ++i)
         runKsize(i);
+    //kill
 
 }

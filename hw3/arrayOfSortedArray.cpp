@@ -108,22 +108,23 @@ void mergeTwoSortedArray(vector<int>& v1, vector<int>& v2, vector<int>& v3){
 
 int main(){
     arrayOfSortedArray t;
+    unsigned int seed = 1 + 100*1;
+    mt19937 gen(seed);
+    uniform_int_distribution<> r_val(minValue,maxValue);
+    int n = 1 << k;
+    vector<int> beSearched(SearchSize);
+    for(int i = 0; i < SearchSize; ++i)
+        beSearched.push_back(r_val(gen));
     //cout << 1;
     for(int i = 0; i < 1 << 23; ++i){
-        int j = 0;
         t.insert(i);
-
-        //cout << "    print" << endl;
-        //for(auto row : t.arr){
-            //cout << "arrsize : " << row.capacity()  << " level " << j++<< endl;
-            //for(auto col : row){
-                //cout << col << ' ';
-            //}
-            //cout <<endl;
-        //}
-
     }
-    cout << t.search(2);
+    for(auto &it : beSearched){
+        if(ds.search(it)){
+            cout << it << endl;
+
+        }
+    }
     //vector<int> it = {1,2,3,4,5};
     //cout << binary_search(it.begin(), it.end(), 5);
     //for(auto row : t._arr){
