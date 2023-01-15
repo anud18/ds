@@ -16,6 +16,7 @@ using Heap = boost::heap::fibonacci_heap<
 PII,
     boost::heap::compare<std::greater<PII> > >;
 const int nVecS = 1000;
+int sum = 0;
 
 
 
@@ -85,14 +86,10 @@ void shortestPath(vector<PII> adj[nVecS], int V,
     // Print shortest distances stored in dist[]
     //printf("Vertex Distance from Source\n");
     //for (int i = 0; i < V; ++i)
-        //printf("%d \t\t %d\n", i, dist[i]);
+    //cout << i << ' ' << dist[i] << endl;
+    for (int i = 0; i < V; ++i)
+        sum += dist[i];
 }
-//void addEdge(vector<pair<int, int> > adj[], int u, int v,
-//int wt)
-//{
-//adj[u].push_back(make_pair(v, wt));
-//adj[v].push_back(make_pair(u, wt));
-//}
 template<typename T , std::size_t N>
 void add_x_edges(T (&adj)[N], int x, int wt){
     unsigned int seed = 1 + 100*1;
@@ -106,7 +103,7 @@ void add_x_edges(T (&adj)[N], int x, int wt){
         while(tag){
             tag = false;
             for(auto it : adj[u]){
-                if (it == make_pair(v, wt)) {
+                if ( u == v || it == make_pair(v, wt)) {
                     u = r_val(gen);
                     v = r_val(gen);
                     tag = true;
@@ -126,37 +123,19 @@ int main()
 
     // making above shown graph
     int i = 0;
-    int max = 1500;
     for(; i < nVecS; ++i){
         addEdge(adj, i % 1000 , (i + 1) % 1000, 1);
     }
-    int x = 500;
-    int y = 1;
-    add_x_edges(adj, x, y);
-    //unsigned int seed = 1 + 100*1;
-    //mt19937 gen(seed);
-    //uniform_int_distribution<> r_val(0,999);
+    int x = 0;
+    //for(; x < 10000; ++x){
+        sum = 0;
+        int y = 1;
+        add_x_edges(adj, 450000, y);
 
-    //for (int times = 0; times < x; ++times) {
-        //int u = r_val(gen);
-        //int v = r_val(gen);
-        //bool tag = true;
-        //while(tag){
-            //tag = false;
-            //for(auto it : adj[u]){
-                //if (it == make_pair(v, 1)) {
-                    //u = r_val(gen);
-                    //v = r_val(gen);
-                    //tag = true;
-                //}
-            //}
-        //}
-        //addEdge(adj, u, v, 1);
+        for(int j = 0 ; j < 1; ++j)
+            shortestPath(adj, nVecS, j);
+        float out = (float) sum / (1000);
+        cout <<  x << ' ' << out << endl;
     //}
-    //addEdge(adj, 0, 500, 1);
-
-    for(int j = 0 ; j < 1000; ++j)
-        shortestPath(adj, nVecS, j);
-
     return 0;
 }
