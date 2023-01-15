@@ -20,7 +20,7 @@ void runKsize(int k){
 
     start = clock();
     //declare data structure
-    SkipList ds(k,0.5);
+    SkipList ds(100,0.5);
     for(int times = 0; times < n; ++times){
         ds.insertElement(r_val(gen));
     }
