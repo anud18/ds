@@ -70,15 +70,19 @@ void shortestPath(vector<PII> adj[nVecS], int V,
             int weight = x.second;
 
             // If there is shorted path to v through u.
-            // Updating distance of v
             if (dist[v] > dist[u] + weight) {
                 // Updating distance of v
-                dist[v] = dist[u] + weight;
-                if (dist[v] > dist[u] + weight) {
-                    // Updating distance of v
-                    dist[v] = dist[u] + weight;
-                    pq.push(make_pair(dist[v], v));
+                if(dist[v] == INF)
+                {
+                    h[v] = pq.push(make_pair(dist[u] + weight, v));
+                    //cout << "bb" << endl;
+                
+                }else
+                {
+                    //cout << "test"  << endl;
+                    pq.increase(h[v], make_pair(dist[u] + weight, v));
                 }
+                dist[v] = dist[u] + weight;
             }
         }
     }
