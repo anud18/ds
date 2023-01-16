@@ -142,7 +142,7 @@ int main()
     //
     int x = 0;
     int y = 100;
-    for(; x < 10; ++x){
+    for(; x < 10000; ++x){
         sum = 0;
         if(x > 0)
             add_x_edges(adj, 1, y);

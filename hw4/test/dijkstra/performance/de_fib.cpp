@@ -141,12 +141,9 @@ int main()
         addEdge(adj, i % 1000 , (i + 1) % 1000, 1);
     }
     //
-    int x = 0;
-    int y = 1;
-    for(; x <= 10000; ++x){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 1, y);
+    int x = 450000;
+    int y = 100;
+            add_x_edges(adj, x, y);
 
         vector<PII> sampleSet;
         for(int j = 0 ; j < z; ++j){
@@ -162,46 +159,5 @@ int main()
         vector<PII>().swap(sampleSet);
         float out = (float) sum / z;
         cout <<  x << ' ' << out << endl;
-    }
-    for(; x <= 100000; x += 1000){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 1000, y);
-        vector<PII> sampleSet;
-        for(int j = 0 ; j < z; ++j){
-            int begin = r_val(gen);
-            int end = r_val(gen);
-            while (sampleFind(sampleSet, begin, end)){
-                begin = r_val(gen);
-                end = r_val(gen);
-            }
-            shortestPath(adj, nVecS, begin, end);
-            sampleSet.push_back(make_pair(begin, end));
-        }
-        vector<PII>().swap(sampleSet);
-        float out = (float) sum / z;
-        cout <<  x << ' ' << out << endl;
-
-    }
-    for(; x <= 490000; x += 10000){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 10000, y);
-        vector<PII> sampleSet;
-        for(int j = 0 ; j < z; ++j){
-            int begin = r_val(gen);
-            int end = r_val(gen);
-            while (sampleFind(sampleSet, begin, end)){
-                begin = r_val(gen);
-                end = r_val(gen);
-            }
-            shortestPath(adj, nVecS, begin, end);
-            sampleSet.push_back(make_pair(begin, end));
-        }
-        vector<PII>().swap(sampleSet);
-        float out = (float) sum / z;
-        cout <<  x << ' ' << out << endl;
-
-    }
     return 0;
 }

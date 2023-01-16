@@ -52,6 +52,7 @@ void shortestPath(vector<PII> adj[nVecS], int V,
        distances are not finalized) */
     while (!pq.empty()) {
         int u = pq.top().second;
+        int k = pq.top().first;
         if(target != -1 && u == target){
             //cout << u << ' ' << dist[u] << endl;
             sum += dist[target];
@@ -66,33 +67,27 @@ void shortestPath(vector<PII> adj[nVecS], int V,
         for (auto x : adj[u]) {
             // Get vertex label and weight of current
             // adjacent of u.
+
+            // If there is shorted path to v through u.
+            // Updating distance of v
             int v = x.first;
             int weight = x.second;
 
             // If there is shorted path to v through u.
             if (dist[v] > dist[u] + weight) {
                 // Updating distance of v
-                if(dist[v] == INF)
-                {
-                    h[v] = pq.push(make_pair(dist[u] + weight, v));
-                    //cout << "bb" << endl;
-                
-                }else
-                {
-                    //cout << "test"  << endl;
-                    pq.increase(h[v], make_pair(dist[u] + weight, v));
-                }
                 dist[v] = dist[u] + weight;
+                pq.push(make_pair(dist[v], v));
             }
         }
     }
 
     // Print shortest distances stored in dist[]
     //printf("Vertex Distance from Source\n");
-    for (int i = 0; i < V; ++i)
-    cout << i << ' ' << dist[i] << endl;
-    if(target >= 0)
-        sum += dist[target];
+    //for (int i = 0; i < V; ++i)
+    //cout << i << ' ' << dist[i] << endl;
+    //if(target >= 0)
+    //sum += dist[target];
 }
 template<typename T , std::size_t N>
 void add_x_edges(T (&adj)[N], int x, int wt){
@@ -137,71 +132,23 @@ int main()
 
     // making above shown graph
     int i = 0;
+    int y = 5;
+    int x = 1024;
     for(; i < nVecS; ++i){
         addEdge(adj, i % 1000 , (i + 1) % 1000, 1);
     }
-    //
-    int x = 0;
-    int y = 1;
-    for(; x <= 10000; ++x){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 1, y);
-
-        vector<PII> sampleSet;
-        for(int j = 0 ; j < z; ++j){
-            int begin = r_val(gen);
-            int end = r_val(gen);
-            while (sampleFind(sampleSet, begin, end)){
-                begin = r_val(gen);
-                end = r_val(gen);
-            }
-            shortestPath(adj, nVecS, begin, end);
-            sampleSet.push_back(make_pair(begin, end));
-        }
-        vector<PII>().swap(sampleSet);
-        float out = (float) sum / z;
-        cout <<  x << ' ' << out << endl;
-    }
-    for(; x <= 100000; x += 1000){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 1000, y);
-        vector<PII> sampleSet;
-        for(int j = 0 ; j < z; ++j){
-            int begin = r_val(gen);
-            int end = r_val(gen);
-            while (sampleFind(sampleSet, begin, end)){
-                begin = r_val(gen);
-                end = r_val(gen);
-            }
-            shortestPath(adj, nVecS, begin, end);
-            sampleSet.push_back(make_pair(begin, end));
-        }
-        vector<PII>().swap(sampleSet);
-        float out = (float) sum / z;
-        cout <<  x << ' ' << out << endl;
+    add_x_edges(adj, 24, y);
+    int total = x;
+    while(total < 1000*999/2){
+        //cout << total;
+        for(int j = 0; j < nVecS; ++j)
+            shortestPath(adj, nVecS, j);
+        add_x_edges(adj, x, y);
+        total += x;
+        x *= 2;
+        cout << total << endl;
 
     }
-    for(; x <= 490000; x += 10000){
-        sum = 0;
-        if(x > 0)
-            add_x_edges(adj, 10000, y);
-        vector<PII> sampleSet;
-        for(int j = 0 ; j < z; ++j){
-            int begin = r_val(gen);
-            int end = r_val(gen);
-            while (sampleFind(sampleSet, begin, end)){
-                begin = r_val(gen);
-                end = r_val(gen);
-            }
-            shortestPath(adj, nVecS, begin, end);
-            sampleSet.push_back(make_pair(begin, end));
-        }
-        vector<PII>().swap(sampleSet);
-        float out = (float) sum / z;
-        cout <<  x << ' ' << out << endl;
 
-    }
     return 0;
 }
